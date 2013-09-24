@@ -23,13 +23,13 @@ This project is a skeleton, a mere shell of the glorious app you will require. T
 
 ### tl;dr
 
-Run `. todo.sh` to list everything that isn't yet implemented. Once you've implemented everything, try the test suite to verify you won the game.
+Run `make todo` to list everything that isn't yet implemented. Once you've implemented everything, try the test suite to verify you won the game.
 
 ### Tests
 
 To make sure your implementation is up to spec: 
 
-    python resourceprovider/tests.py
+    make test
 
 ## API
 
@@ -54,4 +54,4 @@ To help out, do this:
 * Make an issue on GitHub about something that bothers you. Preferably, that something relates to this project.
 * Make a Pull Request fixing something that bothered you about this project.
 
-To find things I was too lazy to do yet, clone the repo and run `. lazy.sh`, then do some of those things. If you do, then if I ever meet you in person, I will buy you a food and render you a firm handshake.
+To find things I was too lazy to do yet, clone the repo and run `make lazy`, then do some of those things. If you do, then if I ever meet you in person, I will buy you a food and render you a firm handshake.
