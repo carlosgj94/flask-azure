@@ -1,6 +1,10 @@
 # Flask-Azure
 
-A `ResourceProvider` template for integrating with the Azure app store. Based on [Azure's example](https://github.com/WindowsAzure/azure-resource-provider-sdk/tree/master/samples/python-flask), but in its own repo for ease of deployment.
+A `ResourceProvider` template for integrating with the Azure app store. Based on [Azure's example](https://github.com/WindowsAzure/azure-resource-provider-sdk/tree/master/samples/python-flask).
+
+N.B.:
+
+> I built this on a Mac, so if you're developing on Windows, things may break. If it does break, and you fix it, please make a Pull Request with your fix so we can continue our ceaseless march to victory against bug-kind.
 
 ## Install
 
@@ -15,8 +19,39 @@ Get the repo, install dependencies, and proceed to dance:
 
 ## Usage
 
-A `ResourceProvider` performs CRUD operations on a handful of models that are mocked out in `/resourceprovider/models.py`. To make them work, you'll need to implement the no-ops.
+This project is a skeleton, a mere shell of the glorious app you will require. To realize its full potential, you must embark on an epic quest into The Source Code.
 
-To make sure your implement is up to spec: 
+### tl;dr
+
+Run `. todo.sh` to list everything that isn't yet implemented. Once you've implemented everything, try the test suite to verify you won the game.
+
+### Tests
+
+To make sure your implementation is up to spec: 
 
   python resourceprovider/tests.py
+
+## API
+
+TODO
+
+### Models
+
+TODO
+
+### Controllers
+
+TODO
+
+### Routes
+
+TODO
+
+## Contributing
+
+To help out, do this:
+
+* Make an issue on GitHub about something that bothers you. Preferably, that something relates to this project.
+* Make a Pull Request fixing something that bothered you about this project.
+
+To find things I was too lazy to do yet, clone the repo and run `. lazy.sh`, then do some of those things. If you do, then if I ever meet you in person, I will buy you a food and render you a firm handshake.
