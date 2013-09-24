@@ -29,7 +29,7 @@ Run `. todo.sh` to list everything that isn't yet implemented. Once you've imple
 
 To make sure your implementation is up to spec: 
 
-  python resourceprovider/tests.py
+    python resourceprovider/tests.py
 
 ## API
 
