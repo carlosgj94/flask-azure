@@ -6,6 +6,18 @@ from resourceprovider.controllers import subscriptions as ctrl
 
 subscriptions = flask.Blueprint('subscriptions', __name__)
 
+events = {
+    'Registered'    :   ctrl.registered,
+    'Disabled'      :   ctrl.disabled,
+    'Enabled'       :   ctrl.enabled,
+    'Deleted'       :   ctrl.deleted
+}
+
+def template_response(resp):
+    if resp.get('ok'):
+        return '', resp['status']
+    else:
+        flask.abort(resp['status'])
 
 @subscriptions.route('/subscriptions/<subscription_id>/Events', methods=['POST'])
 def subscribe(subscription_id):
@@ -14,13 +26,8 @@ def subscribe(subscription_id):
     """
     body = xml_dict(request.data)
     event = body['EntityState'] or body['EntityEvent']
-    if event == 'Registered':
-        ctrl.registered(subscription_id, body)
-    elif event == 'Disabled':
-        ctrl.disabled(subscription_id, body)
-    elif event == 'Enabled':
-        ctrl.enabled(subscription_id, body)
-    elif event == 'Deleted':
-        ctrl.deleted(subscription_id, body)
+    if event in events:
+        result = events[event](subscription_id, body)
+        template_response(result)
     else:
         flask.abort(400)
