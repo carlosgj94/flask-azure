@@ -2,11 +2,13 @@
 TODO: what are the resource controllers?
 """
 
+
 def create():
     """
     This happens when a user purchases your offering from the Windows Azure Store.
     """
     raise NotImplementedError
+
 
 def get():
     """
@@ -14,11 +16,13 @@ def get():
     """
     raise NotImplementedError
 
+
 def delete():
     """
     This happens when a user deletes a previously-purchased Resource.
     """
     raise NotImplementedError
+
 
 def upgrade():
     """

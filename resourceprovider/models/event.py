@@ -4,6 +4,7 @@ TODO: what is an event?
 
 from base import Model
 
+
 class Event(Model):
     fields = {
         '_id': str,

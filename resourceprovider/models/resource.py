@@ -4,6 +4,7 @@ TODO: what is a Resource?
 
 from base import Model
 
+
 class Resource(Model):
     fields = {
         '_id': str,

@@ -1,6 +1,8 @@
 from xml.etree import ElementTree
 
+
 class XmlListConfig(list):
+
     def __init__(self, aList):
         for element in aList:
             if element is not None:
@@ -17,6 +19,7 @@ class XmlListConfig(list):
 
 
 class XmlDictConfig(dict):
+
     '''
     Example usage:
 
@@ -45,14 +48,14 @@ class XmlDictConfig(dict):
                 else:
                     # here, we put the list in dictionary; the key is the
                     # tag name the list elements all share in common, and
-                    # the value is the list itself 
+                    # the value is the list itself
                     aDict = {element[0].tag: XmlListConfig(element)}
                 # if the tag has attributes, add those to the dict
                 if element.items():
                     aDict.update(dict(element.items()))
                 self.update({element.tag: aDict})
             # this assumes that if you've got an attribute in a tag,
-            # you won't be having any text. This may or may not be a 
+            # you won't be having any text. This may or may not be a
             # good idea -- time will tell. It works for the way we are
             # currently doing XML configuration files...
             elif element.items():
@@ -61,6 +64,7 @@ class XmlDictConfig(dict):
             # the text
             else:
                 self.update({element.tag: element.text})
+
 
 def xml_dict(string):
     root = ElementTree.XML(string)

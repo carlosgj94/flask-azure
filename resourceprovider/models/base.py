@@ -2,6 +2,7 @@
 Base model subsequent models inherit from
 """
 
+
 class Model(object):
     # {fieldname: validator_function}
     fields = {}

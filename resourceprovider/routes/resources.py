@@ -6,7 +6,9 @@ from resourceprovider.controllers import resources as ctrl
 resources = flask.Blueprint('resources', __name__)
 url = '/subscriptions/<subscription_id>/cloudservices/<cloud_service_name>/resources/<resource_type>/<resource_name>'
 
+
 class ResourceView(flask.views.MethodView):
+
     def get(self, subscription_id, cloud_service_name, resource_type, resource_name):
         raise NotImplementedError
 
