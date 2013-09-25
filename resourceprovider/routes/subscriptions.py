@@ -7,17 +7,19 @@ from resourceprovider.controllers import subscriptions as ctrl
 subscriptions = flask.Blueprint('subscriptions', __name__)
 
 events = {
-    'Registered'    :   ctrl.registered,
-    'Disabled'      :   ctrl.disabled,
-    'Enabled'       :   ctrl.enabled,
-    'Deleted'       :   ctrl.deleted
+    'Registered':   ctrl.registered,
+    'Disabled':   ctrl.disabled,
+    'Enabled':   ctrl.enabled,
+    'Deleted':   ctrl.deleted
 }
+
 
 def template_response(resp):
     if resp.get('ok'):
         return '', resp['status']
     else:
         flask.abort(resp['status'])
+
 
 @subscriptions.route('/subscriptions/<subscription_id>/Events', methods=['POST'])
 def subscribe(subscription_id):
