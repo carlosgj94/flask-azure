@@ -1,32 +1,24 @@
 import unittest
 from config import config
+from helpers import make_resource
 from resourceprovider import create_app
 
 
 class AzureResourceRouteTest(unittest.TestCase):
 
     def setUp(self):
-        self.app = create_app(config['testing'])
-        self.url = '/subscriptions/%s/cloudservices/%s/resources/%s/%s' % (
-            self.config['subscription_id'],
-            self.config['cloud_service_name'],
-            self.config['resource_type'],
-            self.config['resource_name'])
+        base_url = '{base_uri}/subscriptions/{subscription_id}/cloudservices/{cloud_service_name}/resources/{resource_type}/{resource_name}'
+        self.config = config['testing']
+        self.app = create_app(self.config['app'])
+        self.url = base_url.format(**self.config['resource']['url'])
         self.client = self.app.test_client()
-        with open('tests/templates/resource.xml', 'r') as f:
-            self.template = jinja2.Template(f.read())
-
-    def template_body(self):
-        return self.template.render(**self.config)
-
-    def resource(self, method):
-        return getattr(self.client, method)(self.url, data=self.template_body())
+        self.resource = make_resource(self.client, self.url, self.config['resource']['doc'])
 
     def test_get(self):
         # create resource
-        resource('put')
+        self.resource('put')
         # retrieve resource
-        r = resource('get')
+        r = self.resource('get')
         assert r.status == 200
 
     def test_put(self):
