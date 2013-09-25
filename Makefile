@@ -1,5 +1,6 @@
 lazy:
 	grep -r TODO resourceprovider --exclude=*.pyc
+	grep -r "raise NotImplementedError" tests --exclude=*.pyc
 
 todo:
 	grep -r "raise NotImplementedError" resourceprovider --exclude=*.pyc

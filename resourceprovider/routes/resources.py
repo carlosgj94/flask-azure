@@ -38,8 +38,8 @@ class ResourceView(flask.views.MethodView):
 
     def delete(self, subscription_id, cloud_service_name, resource_type, resource_name):
         body = xml_dict(request.data)
-        ctrl.delete(subscription_id, cloud_service_name,
-                    resource_name, resource_name, body)
+        result = ctrl.delete(
+            subscription_id, cloud_service_name, resource_name, resource_name, body)
         template_response(result)
 
 resources.add_url_rule(url, view_func=ResourceView.as_view('resource_view'))

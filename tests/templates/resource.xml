@@ -1,0 +1,10 @@
+<Resource xmlns="http://schemas.microsoft.com/windowsazure">
+    <CloudServiceSettings>
+        <GeoRegion>{{ georegion }}</GeoRegion>
+    </CloudServiceSettings>
+    <ETag>{{ etag }}</ETag>
+    <Plan>{{ plan }}</Plan>
+    <PromotionCode/>
+    <SchemaVersion>1.0</SchemaVersion>
+    <Type>{{ type }}</Type>
+</Resource>
