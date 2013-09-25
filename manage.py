@@ -1,14 +1,21 @@
 from flask.ext.script import Manager, Server
 import resourceprovider
+from config import config
 
-manager = Manager(resourceprovider.app.run)
+manager = Manager(resourceprovider.app)
 
-# Turn on debugger by default and reloader
-manager.add_command("runserver", Server(
-	use_debugger = True,
-	use_reloader = True,
-	host = '0.0.0.0')
-)
+# env defaults
+defaults = {
+    'development': {
+        'use_debugger': True,
+        'use_reloader': True
+    }
+}
+
+for env, opts in config.iteritems():
+    options = defaults.get(env, {})
+    options.update(opts)
+    manager.add_command(env, Server(**options))
 
 if __name__ == "__main__":
 	manager.run()
