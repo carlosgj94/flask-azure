@@ -16,3 +16,7 @@ dev:
 
 prod:
 	python manage.py production
+
+pep:
+	autopep8 -i -r resourceprovider
+	autopep8 -i -r tests
