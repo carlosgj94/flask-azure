@@ -3,19 +3,21 @@ from config import config
 import jinja2
 from resourceprovider import create_app
 
+
 class AzureSubscriptionRouteTest(unittest.TestCase):
+
     def setUp(self):
         self.config = config['testing']
         self.app = create_app(self.config)
         self.url = '%s:%s/subscriptions/%s/Events' % (
-            self.config['host'], 
-            self.config['port'], 
+            self.config['host'],
+            self.config['port'],
             self.config['subscription_id'])
         self.client = self.app.test_client()
         with open('tests/templates/subscribe.xml', 'r') as f:
             self.template = jinja2.Template(f.read())
 
-    ### HELPERS
+    # HELPERS
 
     def template_body(self, state):
         options = {
@@ -28,7 +30,7 @@ class AzureSubscriptionRouteTest(unittest.TestCase):
         data = self.template_body(state)
         return self.client.post(url, data=data)
 
-    ### TESTS
+    # TESTS
 
     def test_register(self):
         r = subscribe('Registered')

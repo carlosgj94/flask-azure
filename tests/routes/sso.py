@@ -2,7 +2,9 @@ import unittest
 from config import config
 from resourceprovider import create_app
 
+
 class AzureSSORouteTest(unittest.TestCase):
+
     def setUp(self):
         self.app = create_app(config['testing'])
 

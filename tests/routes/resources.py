@@ -2,7 +2,9 @@ import unittest
 from config import config
 from resourceprovider import create_app
 
+
 class AzureResourceRouteTest(unittest.TestCase):
+
     def setUp(self):
         self.app = create_app(config['testing'])
         self.url = '/subscriptions/%s/cloudservices/%s/resources/%s/%s' % (
