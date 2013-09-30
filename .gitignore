@@ -3,3 +3,4 @@ DS_Store
 *.todo
 venv
 config.py
+manifest.xml

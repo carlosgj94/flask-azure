@@ -1,7 +1,7 @@
 <ResourceManifest>
 	<Test>
 		<ResourceProviderEndpoint>{{ dev_uri }}</ResourceProviderEndpoint>
-		<ResourceProviderSsoEndpoint>{{ dev_uri}}/sso</ResourceProviderSsoEndpoint>
+		<ResourceProviderSsoEndpoint>{{ dev_uri }}/sso</ResourceProviderSsoEndpoint>
 	</Test>
 	<Prod>
 		<ResourceProviderEndpoint>{{ prod_uri }}</ResourceProviderEndpoint>

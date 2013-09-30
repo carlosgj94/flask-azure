@@ -1,6 +1,6 @@
 from flask.ext.script import Manager, Server
 import resourceprovider
-from config import config
+import config
 
 manager = Manager(resourceprovider.app)
 
@@ -12,7 +12,7 @@ defaults = {
     }
 }
 
-for env, opts in config.iteritems():
+for env, opts in config.app.iteritems():
     options = defaults.get(env, {})
     options.update(opts)
     manager.add_command(env, Server(**options))

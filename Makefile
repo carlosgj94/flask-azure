@@ -1,15 +1,19 @@
 lazy:
 	grep -r TODO resourceprovider --exclude=*.pyc
-	grep -r "raise NotImplementedError" tests --exclude=*.pyc
 
 todo:
 	grep -r "raise NotImplementedError" resourceprovider --exclude=*.pyc
 
 test:
-	python tests/__init__.py
+	dukaan manifest
+	dukaan create
+	dukaan show
+	dukaan upgrade
+	dukaan sso
 
 init:
 	python init.py
+	dukaan init
 
 dev:
 	python manage.py development

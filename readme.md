@@ -27,9 +27,7 @@ Run `make todo` to list everything that isn't yet implemented. Once you've imple
 
 ### Tests
 
-To make sure your implementation is up to spec: 
-
-    make test
+To make sure your implementation is up to spec, start your development server with `make dev`. Then, with it still running, do `make test`. If anything fails, pray to the gods of your ancestors three times, then fix it!
 
 ## API
 
