@@ -1,4 +1,0 @@
-from subscription import AzureSubscriptionRouteTest
-from resources import AzureResourceRouteTest
-from sso import AzureSSORouteTest
-from cloudservices import AzureCloudServiceRouteTest
