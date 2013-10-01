@@ -1,8 +1,6 @@
-from flask.ext.script import Manager, Server
 import resourceprovider
 import config
-
-manager = Manager(resourceprovider.app)
+import sys
 
 # env defaults
 defaults = {
@@ -12,10 +10,11 @@ defaults = {
     }
 }
 
-for env, opts in config.app.iteritems():
-    options = defaults.get(env, {})
-    options.update(opts)
-    manager.add_command(env, Server(**options))
+def start_app(env="development"):
+    options = config.app[env]
+    options.update(defaults.get(env, {}))
+    print options
+    return resourceprovider.create_app(options)
 
 if __name__ == "__main__":
-	manager.run()
+	start_app(sys.argv[1]).run()
