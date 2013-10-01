@@ -15,6 +15,8 @@ Get the repo, install dependencies, and proceed to dance:
     virtualenv venv
     source venv/bin/activate
     pip install -r requirements.txt
+    make init
+    # answer questions about your app
     echo "now it is time to dance" | say
 
 ## Usage
