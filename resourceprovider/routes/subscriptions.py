@@ -14,13 +14,6 @@ events = {
 }
 
 
-def template_response(resp):
-    if resp.get('ok'):
-        return '', resp['status']
-    else:
-        flask.abort(resp['status'])
-
-
 @subscriptions.route('/subscriptions/<subscription_id>/Events', methods=['POST'])
 def subscribe(subscription_id):
     """
@@ -29,7 +22,11 @@ def subscribe(subscription_id):
     body = xmltodict.parse(request.data)
     event = body['EntityEvent']['EntityState']
     if event in events.keys():
-        result = events[event](subscription_id, body)
-        template_response(result)
+        try:
+            result = events[event](subscription_id, body)
+        except NotImplementedError:
+            return flask.abort(500)
+        else:
+            return 200
     else:
-        flask.abort(400)
+        return flask.abort(400)

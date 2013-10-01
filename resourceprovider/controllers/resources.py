@@ -8,13 +8,13 @@ def create(subscription_id, cloud_service_name, resource_type, resource_name, bo
     """
     This happens when a user purchases your offering from the Windows Azure Store.
     """
-    data.update({
+    body.update({
         'subscription_id': subscription_id,
         'cloud_service_name': cloud_service_name,
         'resource_type': resource_type,
         'resource_name': resource_name
         })
-    resource = Resource(data)
+    resource = Resource(**body)
     return resource.save()
 
 
