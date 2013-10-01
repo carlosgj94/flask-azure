@@ -4,6 +4,7 @@ TODO: what are the subscription controllers?
 from resourceprovider.models import Subscription, Event
 from datetime import datetime
 
+
 def _log_event(body):
     event_opts = {
         '_id': body['EntityEvent']['OperationId']

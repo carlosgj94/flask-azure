@@ -13,7 +13,7 @@ def create(subscription_id, cloud_service_name, resource_type, resource_name, bo
         'cloud_service_name': cloud_service_name,
         'resource_type': resource_type,
         'resource_name': resource_name
-        })
+    })
     resource = Resource(**body)
     return resource.save()
 
@@ -36,6 +36,7 @@ def upgrade(subscription_id, cloud_service_name, resource_type, resource_name, b
     """
     This happens when a user upgrades a plan for a previously-purchased Resource.
     """
-    resource = Resource().get(subscription_id, cloud_service_name, resource_type, resource_name)
+    resource = Resource().get(
+        subscription_id, cloud_service_name, resource_type, resource_name)
     resource.plan = body['Resource']['Plan']
     return resource.save()

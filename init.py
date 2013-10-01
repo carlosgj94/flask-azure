@@ -22,6 +22,7 @@ config_prompts = {
     }
 }
 
+
 def generate_config():
     """
     Creates config.py
@@ -36,7 +37,8 @@ def generate_config():
 
     for field, prompt in config_prompts.iteritems():
         if prompt.get('default'):
-            result = raw_input(u'{0} ({1}) '.format(prompt['message'], prompt['default']))
+            result = raw_input(u'{0} ({1}) '.format(
+                prompt['message'], prompt['default']))
         else:
             result = raw_input(u'{0} '.format(prompt['message']))
         if not result:
@@ -48,7 +50,6 @@ def generate_config():
         f.write(template.render(**config))
 
     print "Created config.py"
-
 
 
 def generate_manifest():

@@ -12,6 +12,7 @@ test:
 	dukaan sso
 
 init:
+	openssl genrsa -des3 -out certs/static/private.key
 	python init.py
 	dukaan init
 
@@ -23,4 +24,4 @@ prod:
 
 pep:
 	autopep8 -i -r resourceprovider
-	autopep8 -i -r tests
+	autopep8 -i certs/__init__.py manage.py config.py init.py

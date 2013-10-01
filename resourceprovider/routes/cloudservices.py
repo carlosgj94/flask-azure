@@ -5,6 +5,7 @@ from resourceprovider.controllers import cloudservices as ctrl
 cloudservices = flask.Blueprint('cloudservices', __name__)
 url = '/subscriptions/<subscription_id>/cloudservices/<cloud_service_name>'
 
+
 @cloudservices.route(url, methods=['GET'])
 def get_cloudservice(subscription_id, cloud_service_name):
     try:

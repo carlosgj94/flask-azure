@@ -13,6 +13,7 @@ methods = {
     'DELETE': ctrl.delete
 }
 
+
 @resources.route(url, methods=['GET', 'POST', 'PUT', 'DELETE'])
 def resource(*args, **kwargs):
     body = xmltodict.parse(request.data)
