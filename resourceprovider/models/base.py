@@ -9,7 +9,7 @@ class Model(object):
 
     def __init__(self, **kwargs):
         # make sure each needed field passes snuff
-        for field, validator in fields:
+        for field, validator in self.fields.iteritems():
             try:
                 validator(kwargs.get(field))
             except Exception as e:
@@ -21,5 +21,8 @@ class Model(object):
     def save(self):
         raise NotImplementedError
 
-    def get(self, id):
+    def get(self, *args, **kwargs):
+        raise NotImplementedError
+
+    def delete(self):
         raise NotImplementedError

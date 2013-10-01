@@ -41,7 +41,7 @@ class XmlDictConfig(dict):
             if element is not None:
                 # treat like dict - we assume that if the first two tags
                 # in a series are different, then they are all different.
-                if len(element) == 1 or element[0].tag != element[1].tag:
+                if len(element) < 2 or element[0].tag != element[1].tag:
                     aDict = XmlDictConfig(element)
                 # treat like list - we assume that if the first two tags
                 # in a series are the same, then the rest are the same.
@@ -52,14 +52,18 @@ class XmlDictConfig(dict):
                     aDict = {element[0].tag: XmlListConfig(element)}
                 # if the tag has attributes, add those to the dict
                 if element.items():
-                    aDict.update(dict(element.items()))
-                self.update({element.tag: aDict})
+                    aDict.update(element)
+                self.update({
+                    element.tag: aDict
+                    })
             # this assumes that if you've got an attribute in a tag,
             # you won't be having any text. This may or may not be a
             # good idea -- time will tell. It works for the way we are
             # currently doing XML configuration files...
-            elif element.items():
-                self.update({element.tag: dict(element.items())})
+            # elif element.items():
+            #     self.update({
+            #         element.tag: element 
+            #         })
             # finally, if there are no child tags and no attributes, extract
             # the text
             else:
@@ -68,4 +72,5 @@ class XmlDictConfig(dict):
 
 def xml_dict(string):
     root = ElementTree.XML(string)
+    printroot
     return XmlDictConfig(root)

@@ -1,5 +1,5 @@
 import flask
-from resourceprovider.util import xml_dict
+import xmltodict
 from resourceprovider.controllers import cloudservices as ctrl
 
 cloudservices = flask.Blueprint('cloudservices', __name__)

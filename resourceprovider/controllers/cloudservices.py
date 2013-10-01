@@ -1,9 +1,11 @@
 """
 TODO: what are the cloudservice controllers?
 """
+from resourceprovider.models import CloudService
 
-def get():
+def get(subscription_id, cloud_service_name):
     """
     This happens when a user views details about a purchased Cloud Service.
     """
-    raise NotImplementedError
+    cs = CloudService()
+    return cs.get(subscription_id, cloud_service_name)
