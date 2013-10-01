@@ -6,11 +6,7 @@ import sys
 # env defaults
 defaults = {
     'development': {
-        'debug': True,
-        'ssl_context': certs.get_context('development')
-    },
-    'production': {
-        'ssl_context': certs.get_context('production')
+        'debug': True
     }
 }
 
