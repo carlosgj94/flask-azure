@@ -1,5 +1,4 @@
 import resourceprovider
-import certs
 import config
 import sys
 
