@@ -5,19 +5,19 @@ import os
 
 config_prompts = {
     'dev_uri': {
-        'message': 'What URL will your development environment use?',
+        'message': u'What URL will your development environment use?',
         'default': u'http://localhost:5000'
     },
     'prod_uri': {
-        'message': 'What URL will your production environment use?',
+        'message': u'What URL will your production environment use?',
         'default': u''
     },
     'key': {
-        'message': 'key',
+        'message': u'key',
         'default': u''
     },
     'password': {
-        'message': 'password',
+        'message': u'password',
         'default': u''
     }
 }

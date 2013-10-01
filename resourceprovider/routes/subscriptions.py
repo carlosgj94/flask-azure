@@ -1,7 +1,7 @@
 import flask
 import flask.views
 from flask import request
-from resourceprovider.util import xml_dict
+from xml.etree import cElementTree as ElementTree
 from resourceprovider.controllers import subscriptions as ctrl
 
 subscriptions = flask.Blueprint('subscriptions', __name__)
@@ -26,10 +26,10 @@ def subscribe(subscription_id):
     """
     handle subscription events: Registered, Disabled, Enabled, Deleted
     """
-    body = xml_dict(request.data)
-    event = body['EntityState'] or body['EntityEvent']
-    if event in events:
-        result = events[event](subscription_id, body)
+    body = ElementTree.fromstring(request.data)
+    event = body.findall('{http://schemas.datacontract.org/2004/07/Microsoft.Cis.DevExp.Services.Rdfe.ServiceManagement}EntityState')[0]
+    if event.text in events.keys():
+        result = events[event.text](subscription_id, body)
         template_response(result)
     else:
         flask.abort(400)

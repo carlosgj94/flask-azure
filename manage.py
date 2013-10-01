@@ -5,16 +5,13 @@ import sys
 # env defaults
 defaults = {
     'development': {
-        'use_debugger': True,
-        'use_reloader': True
+        'debug': True
     }
 }
 
 def start_app(env="development"):
     options = config.app[env]
-    options.update(defaults.get(env, {}))
-    print options
-    return resourceprovider.create_app(options)
+    resourceprovider.create_app(options).run(**defaults.get(env, {}))
 
 if __name__ == "__main__":
-	start_app(sys.argv[1]).run()
+	start_app(sys.argv[1])
